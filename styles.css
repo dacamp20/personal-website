@@ -17,8 +17,6 @@
 
 :root {
     color-scheme: light dark;
-    --primary-color: light-dark(var(--text-color, black);, #fafafa);
-    --primary-background: light-dark(var(--background-color, white);, #121212)
 }
 
 html{
@@ -31,13 +29,14 @@ html{
 
 body {
     font-family: "Quicksand", sans-serif;
-    border: 6px solid black; 
+    border: 6px solid black;
     border-radius: var(--radius-size, 12px);
     padding: 14px;  
     color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
     background-color: light-dark(var(--light-background-color, white), var(--dark-background-color, black));
 }
 
+/*Timeline animation on projects page*/
 .timeline{
     position: relative;
     max-width: 1200px;
@@ -52,7 +51,7 @@ body {
     top: 0;
     left: 50%;
     margin-left: -3px;
-    z-index: 0;
+    z-index: -1;
     animation: moveline 4s linear forwards;
 }
 @keyframes moveline {
@@ -96,13 +95,14 @@ body {
 }
 
 .text-box{
-    padding: 20px 30px;
+    
     background-color: light-dark(var(--light-text-box-color, white), var(--dark-text-box-color, black));
     color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
     position: relative;
     border-radius: 6px;
     border: 1px solid black;
-    font-size: 14px;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     & h3{
         color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
     }
@@ -110,9 +110,6 @@ body {
         display: inline-block;
         margin-bottom: 14px;
     }
-}
-.text-box{
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 .text-box:hover{
     transform: translateY(-5px);
@@ -161,7 +158,59 @@ body {
     left: -14px;
 }
 
-@media screen  and (max-width:600px){
+/*Desktop: 1025px and up*/
+@media screen and (min-width: 1025px) {
+    .timeline {
+        max-width: 1400px;
+        margin: 100px auto;
+    }
+    .container {
+        padding: 10px 50px;
+        width: 50%
+    }
+    .text-box{
+        padding: 20px 30px;
+        font-size: 16px;
+    }
+    
+}
+
+/*Tablet: 768px-1024px*/
+@media screen  and (min-width:768px) and (max-width:1024px){
+    figure img{
+        max-width: 300px;        
+        max-height: 300px;
+    }
+    img{
+        max-width: 225px;
+        max-height: 225px;
+    }
+    .timeline{
+        margin: 50px auto;
+    }    
+    .container{
+        padding: 5px 40px;
+        width: 50%;        
+    }
+    .text-box{
+        padding: 15px 25px;
+        font-size: 14px;
+        & small{
+            margin-bottom: 12px;
+        }
+    }
+}
+
+/*Phone: 0px-767px*/
+@media screen  and (max-width:767px){
+    figure img{
+        max-width: 200px;        
+        max-height: 200px;
+    }
+    img{
+        max-width: 150px;
+        max-height: 150px;
+    }
     .timeline{
         margin: 50px auto;
     }    
@@ -175,9 +224,10 @@ body {
     }
     .text-box{
         font-size: 12px;
-    }
-    .text-box small{
-        margin-bottom: 10px;
+        padding: 10px 15px;
+        & small{
+            margin-bottom: 10px;
+        }
     }
     .right-container{
         left: 0;
@@ -189,8 +239,21 @@ body {
         border-right: 15px solid light-dark(white, grey);
         border-left: 0;
         left: -14px;
-    }.container video{
-        width: 150px;
+    }
+    .container video{
+        max-width: 150px;
+    }
+    nav::before{
+        content: '☰ Menu';
+        display: block;
+        text-align: left;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+    }
+    nav ul{
+        flex-direction: column;
+        gap: 0.25rem;
     }
 }
 
@@ -205,7 +268,7 @@ header , footer{
     text-align: center;
 }
 
-img, video, input, textarea, section, article, nav, progress, dialog {
+video, input, textarea, section, article, nav, progress, dialog {
     border-radius: var(--radius-size, 12px);
 }
 
@@ -215,29 +278,12 @@ video{
     object-fit: contain;
     background-color: black;
 }
-img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-}
 figure img{
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
     border: 4px solid light-dark(var(--light-text-color, black), var(--dark-text-color, white));
-    max-width: 100%;
     height: auto;
-}
-@media screen and (max-width:600px){
-    
-    figure img{
-        max-width: 200px;        
-        max-height: 200px;
-    }
-    img{
-        max-width: 150px;
-        max-height: 150px;
-    }
 }
 
 nav ul { 
@@ -256,7 +302,7 @@ nav a{
 nav a:hover{
     transform: translateY(-5px);
     box-shadow: 0 5px 40px light-dark(black, white);
-    color: light-dark(black, white);
+    color: light-dark(black, var(--purple-color-mix, purple));
     font-style: italic;
 }
 
@@ -268,5 +314,5 @@ h1, h2, h3, h4 {
 profile-card { 
     display: block; 
     padding: 4px; 
-    border: 2px dashed red; /*styling for custom element*/
+    border: 10px dashed red;
 }
