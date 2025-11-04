@@ -22,36 +22,50 @@
                 <li><a href="contact.html">Contact</a></li>                
             </ul>
         </nav>
-        <h1>Contact me</h1>
+        <h1>Contact</h1>
     </header>
 
     <main>
-        <h2>Get in touch </h2>
 
-        <section id="MyLinks">
-            <h2>My links</h2>
-                <ol>
-                    <li>My email: dancampu26@gmail.com</li>
-                    <li>LinkedIn link: <a href="https://www.linkedin.com/in/daniel-campuzano-936391319">https://www.linkedin.com/in/daniel-campuzano-936391319</a></li>
-                    <li>GitHub link: <a href="https://github.com/dacamp20">https://github.com/dacamp20</a></li>
-                </ol>
+        <section id="MyLinks" class="contact">
+            <div class="contact-container">
+                <h2>Reach Out To Me</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-form">
+                        <h3>Send me a message</h3>
+                        <form action="https://httpbin.org/post" method="POST">
+                            <fieldset >
+                                <legend>I'll get back to you:</legend>
+                                <div class="form-group">
+                                    <label for="name">Name:
+                                    <input type="text" name="name" id="name" placeholder="Your Name" required>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email
+                                    <input type="email" name="email" id="email" placeholder="Your Email" required>
+                                    </label><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Please leave your message here:
+                                    <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                                    </label>
+                                </div>
+                                <input type="submit" name="submit" id="submit" value="Send message">
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p>My email: dancampu26@gmail.com</p>
+                        <p>My LinkedIn: <a href="https://www.linkedin.com/in/daniel-campuzano-936391319">link</a></p>
+                        <p>My GitHub: <a href="https://github.com/dacamp20">link</a></p>
+                    </div>
+                </div>
+           </div>
         </section>
 
-        <form action="https://httpbin.org/post" method="POST">
-            <fieldset>
-                <legend>Leave me a message</legend>
-                <label for="Name">Name:
-                    <input type="text" name="Name" id="Name">
-                </label>
-                <label for="email">Email
-                    <input type="email" name="email" id="email" required>
-                </label><br>
-                <label for="message">Please leave your message here:
-                    <textarea name="message" id="message"></textarea>
-                </label>
-                <input type="submit" name="submit" id="submit" value="Send message">
-            </fieldset>
-        </form>
+        
 
 
     </main>
