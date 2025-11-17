@@ -57,6 +57,12 @@ main, header, footer {
     margin: auto;
     padding: 1rem 0;
 }
+main{
+    view-transition-name: main;
+}
+header{
+    view-transition-name: header;
+}
 
 header , footer{
     min-height: 4dvh;
@@ -80,6 +86,9 @@ figure img{
     height: auto;
 }
 
+nav{
+    margin-top: 1rem;
+}
 nav ul { 
     max-width: max-content;
     font-size: clamp(0.7rem, 2dvw, 1.5rem);
@@ -382,6 +391,90 @@ output {
 .switch input:checked + .slider::before{
     transform: translateX(24px);
 }
+
+/*MPA View Transition*/
+@view-transition{
+    navigation: auto;
+}
+@supports not (navigation: auto) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: fadeInFallBack 0.5s ease-in-out both;
+    }
+    @keyframes fadeInFallBack {
+        from { 
+            opacity: 0;
+        }
+        to { 
+            opacity: 1;
+        }
+    }
+}
+@keyframes fade-out-right {
+    from {
+        opacity: 1;
+        transform: scale(1) translateX(0%);
+    }
+    to {
+        opacity: 0;
+        transform: scale(1) translateX(100%);
+    }   
+}
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: scale(1) translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateX(0%);
+    }
+}
+@keyframes fade-out-down {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0%);
+    }
+    to {
+        opacity: 0;
+        transform: scale(1) translateY(100%);
+    }   
+}
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: scale(1) translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0%);
+    }
+}
+::view-transition-old(main) {
+    animation: 1s ease-in-out both fade-out-right;
+}
+::view-transition-new(main) {
+    animation: 1s ease-in-out both fade-in-right;
+}
+::view-transition-old(header) {
+    animation: 1s ease-in-out both fade-out-down;
+}
+::view-transition-new(header) {
+    animation: 1s ease-in-out both fade-in-up;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    background-color: transparent;
+}
+/*
+::view-transition-old(root) {
+    animation: 2s ease-in-out both fade-out-right;
+}
+::view-transition-new(root) {
+    animation: 2s ease-in-out both fade-in-right;
+}
+*/
 
 /*Desktop: 1025px and up*/
 @media screen and (min-width: 1025px) {
