@@ -236,7 +236,7 @@ h1, h2, h3, h4 {
 .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 0rem;
     margin: 1rem 0;
 }
 .skill-category h4 {
@@ -244,6 +244,7 @@ h1, h2, h3, h4 {
     color: light-dark(#4a5568, #cbd5e0);
 }
 .skill-category li {
+    font-size: 0.65rem;
     padding: 0.15rem 0;
     color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
 }
