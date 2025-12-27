@@ -19,7 +19,7 @@ const defaultProjects = [
         title: "Habitizer Android App",
         date: "Winter 2025",
         course: "CSE 110",
-        img: "androidStudioLogo.png",
+        img: "assets/images/androidStudioLogo.png",
         alt: "Habitizer Android app icon",
         desc: "Team-built Android app with Android Studio for habit tracking using Java, MVP architecture, Strategy & Observer patterns, GitHub CI, and agile workflow.",
         link: "https://github.com/CSE-110-Winter-2025/habitizer-team-19/tree/master/lib"
@@ -28,7 +28,7 @@ const defaultProjects = [
         title: "CSE Educational Studies Portfolio",
         date: "Fall 2024",
         course: "EDS 124BR",
-        img: "edsPortfolioSS.jpg",
+        img: "assets/images/edsPortfolioSS.jpg",
         alt: "Screen shot of my published eds portfolio site",
         desc: "Built an educational Google Sites portfolio including videos where I explain coding programs to demonstrate understanding and teaching ability.",
         link: "https://sites.google.com/view/danielsedsportfolio/home"

@@ -244,7 +244,7 @@ h1, h2, h3, h4 {
     color: light-dark(#4a5568, #cbd5e0);
 }
 .skill-category li {
-    font-size: 0.65rem;
+    font-size: 0.60rem;
     padding: 0.15rem 0;
     color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
 }
@@ -299,6 +299,7 @@ h1, h2, h3, h4 {
 }
 .coursework li {
     padding: 0.15rem 0;
+    font-size: 0.65rem;
     color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
 }
 .cta-btn {
@@ -971,6 +972,16 @@ output {
     .about-content, .experience-content {
         grid-template-columns: 1fr;
     }
+    .skills-grid {
+        & li {
+            font-size: 0.75rem;
+        }
+    }
+    .coursework ul {
+        & li {
+            font-size: 0.75rem;
+        }
+    }
 
     /*projects timeline page*/
     .timeline{
@@ -1026,9 +1037,15 @@ output {
     }
     .skills-grid {
         grid-template-columns: 1fr;
+        & li {
+            font-size: 0.90rem;
+        }
     }
     .coursework ul {
         columns: 1;
+        & li {
+            font-size: 0.85rem;
+        }
     }
     .about-section, .experience-section {
         padding: 0.5rem;
