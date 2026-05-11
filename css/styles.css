@@ -1,13 +1,15 @@
 :root {
     /* Color variable */
-    --light-background-color: #d0fbc7;
-    --light-text-color: #3b3b3b;
-    --light-text-box-color: white;
-    --light-input-box-color: lightgrey;
+    --light-background-color: #F5F7FA;
+    --light-text-color: #111827;
+    --light-text-box-color: #e6f7ff;
+    --light-input-box-color: #E5E7EB;
+
     --dark-background-color: #121212;
     --dark-text-color: #fafafa;    
     --dark-text-box-color: grey;   
     --dark-input-box-color: white;
+    
     --accent-color: #a3c4f3;
     --accent-color-2: #ffcfe1;
     --surface-color: #ffffff;
@@ -28,8 +30,14 @@
 
 :root {
     color-scheme: light dark;
-    color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
-    background-color: light-dark(var(--light-background-color, white), var(--dark-background-color, black));
+    color: light-dark(
+        var(--light-text-color, black), 
+        var(--dark-text-color, white)
+    );
+    background-color: light-dark(
+        var(--light-background-color, white), 
+        var(--dark-background-color, black)
+    );
 }
 
 html{

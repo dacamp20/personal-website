@@ -1,34 +1,365 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daniel Campuzano's COGS 127 Page</title>
+    <title>COGS 127 Case Study - Daniel Campuzano</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="js/mobile-menu.js"></script>
-    <!-- <script src="theme.js"></script> -->
+    <style>
+        /* ── Case Study page-scoped styles ── */
+        .cs-hero {
+            background: linear-gradient(135deg, light-dark(#5492af, #09101b), light-dark(#e6f7ff, #2a4365));
+            border-radius: var(--radius-size, 12px);
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+        }
+        .cs-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .cs-hero h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+        }
+        .cs-hero h2 em {
+            font-style: italic;
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+        }
+        .cs-hero-sub {
+            font-size: 1.1rem;
+            line-height: 1.65;
+            color: light-dark(#4a5568, #cbd5e0);
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+        .cs-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .cs-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.3rem 0.85rem;
+            border-radius: 100px;
+            background-color: light-dark(rgba(255,255,255,0.35), rgba(255,255,255,0.1));
+            border: 1px solid light-dark(rgba(0,0,0,0.15), rgba(255,255,255,0.2));
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            letter-spacing: 0.03em;
+        }
+
+        /* Stat bar */
+        .cs-stat-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .cs-stat-card {
+            background-color: light-dark(var(--light-text-box-color, white), var(--dark-text-box-color, grey));
+            border-radius: var(--radius-size, 12px);
+            padding: 1.5rem;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cs-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.10);
+        }
+        .cs-stat-num {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: light-dark(blue, darkorange);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .cs-stat-label {
+            font-size: 0.78rem;
+            color: light-dark(#4a5568, #cbd5e0);
+            line-height: 1.5;
+        }
+
+        /* Section wrapper */
+        .cs-section {
+            background-color: light-dark(var(--light-text-box-color, white), var(--dark-text-box-color, grey));
+            border-radius: var(--radius-size, 12px);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+        }
+        .cs-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.25rem;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+        }
+        .cs-section h4 {
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem;
+            color: light-dark(#4a5568, #cbd5e0);
+        }
+        .cs-section p {
+            line-height: 1.75;
+            margin-bottom: 1rem;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+        }
+        .cs-section p:last-child { margin-bottom: 0; }
+
+        /* Problem box */
+        .cs-problem {
+            background: linear-gradient(135deg, light-dark(#5492af, #09101b), light-dark(#e6f7ff, #2a4365));
+            border-radius: var(--radius-size, 12px);
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+        }
+        .cs-problem .cs-eyebrow { margin-bottom: 0.75rem; }
+        .cs-problem p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            margin: 0;
+        }
+
+        /* Pull quote */
+        .cs-quote {
+            border-left: 4px solid light-dark(blue, var(--accent-color, #a3c4f3));
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            margin: 1.75rem 0;
+        }
+        .cs-quote p {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            margin-bottom: 0.5rem !important;
+        }
+        .cs-quote cite {
+            font-size: 0.82rem;
+            color: light-dark(#4a5568, #cbd5e0);
+            font-style: normal;
+        }
+
+        /* Participant grid */
+        .cs-participant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .cs-participant-card {
+            background-color: light-dark(#f7fafc, #2d3748);
+            border-radius: 8px;
+            padding: 1.25rem;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cs-participant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+        .cs-participant-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+            margin-bottom: 0.5rem;
+        }
+        .cs-participant-card p {
+            font-size: 0.88rem;
+            color: light-dark(#4a5568, #cbd5e0);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Findings list */
+        .cs-findings {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .cs-findings li {
+            display: flex;
+            gap: 0.85rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid light-dark(#e2e8f0, #4a5568);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+        }
+        .cs-findings li:last-child { border-bottom: none; }
+        .cs-findings li::before {
+            content: '→';
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            padding-top: 3px;
+            font-weight: 600;
+        }
+
+        /* Unexpected box */
+        .cs-unexpected {
+            background-color: light-dark(#f7fafc, #2d3748);
+            border-radius: var(--radius-size, 12px);
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+        }
+        .cs-unexpected ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cs-unexpected ul li {
+            padding: 0.5rem 0 0.5rem 1.2rem;
+            position: relative;
+            font-size: 0.93rem;
+            line-height: 1.65;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+        }
+        .cs-unexpected ul li::before {
+            content: '!';
+            position: absolute;
+            left: 0;
+            color: light-dark(blue, var(--accent-color, #a3c4f3));
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Pivot / insight box */
+        .cs-pivot {
+            background: linear-gradient(135deg, light-dark(#5492af, #09101b), light-dark(#e6f7ff, #2a4365));
+            border-radius: var(--radius-size, 12px);
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+        }
+        .cs-pivot p {
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            margin: 0;
+        }
+
+        /* Section divider label */
+        .cs-section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .cs-section-label h3 { margin: 0; }
+        .cs-section-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: light-dark(blue, var(--accent-color, #a3c4f3));
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Lo-fi / hi-fi sketch strip */
+        .cs-screen-strip {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            margin: 1.25rem 0;
+            scrollbar-width: thin;
+        }
+        .cs-screen-strip::-webkit-scrollbar { height: 4px; }
+        .cs-screen-strip::-webkit-scrollbar-track { background: transparent; }
+        .cs-screen-strip::-webkit-scrollbar-thumb {
+            background: light-dark(#e2e8f0, #4a5568);
+            border-radius: 4px;
+        }
+        .cs-screen-item {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-width: 180px;
+        }
+        .cs-screen-item img {
+            width: 180px;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+            object-fit: contain;
+            display: block;
+        }
+        .cs-screen-caption {
+            font-size: 0.72rem;
+            color: light-dark(#4a5568, #cbd5e0);
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        /* Flow step list */
+        .cs-flow {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0;
+            counter-reset: flow-counter;
+        }
+        .cs-flow li {
+            counter-increment: flow-counter;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid light-dark(#e2e8f0, #4a5568);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            align-items: flex-start;
+        }
+        .cs-flow li:last-child { border-bottom: none; }
+        .cs-flow li::before {
+            content: counter(flow-counter);
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: light-dark(#e6f7ff, #2a4365);
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 767px) {
+            .cs-stat-bar { grid-template-columns: 1fr; gap: 1rem; }
+            .cs-section { padding: 1.25rem; }
+            .cs-hero { padding: 2rem 1.25rem; }
+            .cs-screen-item { max-width: 140px; }
+            .cs-screen-item img { width: 140px; }
+        }
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            .cs-stat-bar { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <!--
-        <div class="theme-toggle-container">
-            <label for="themeToggle" class="theme-toggle-label">Thanksgiving Theme</label>
-            <label class="switch">
-                <input type="checkbox" id="themeToggle" name="themeToggle" onclick="toggleTheme()">
-                <span class="slider"></span>
-            </label>
-            <noscript>
-                <p style="color: red; font-weight: bold;">
-                    Using system default theme. Theme toggle requires JavaScript.
-                </p>
-            </noscript>
-        </div>
-        -->
-
         <nav>
             <button class="menu-toggle" aria-label="Toggle navigation menu">
                 ☰ Menu
@@ -37,18 +368,222 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects Timeline</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="project-cards.html">Project-Cards</a></li>  
+                <li><a href="project-cards.html">Project-Cards</a></li>
                 <li><a href="crud.html">Manage Cards</a></li>
                 <li><a href="cogs127.html">COGS 127</a></li>
             </ul>
         </nav>
-                
-        <h1>COGS 127 Project Case Study</h1>
+        <h1>Daniel Campuzano's CS Portfolio</h1>
     </header>
 
     <main>
 
+        <!-- HERO -->
+        <section class="cs-hero">
+            <p class="cs-eyebrow">COGS 127 · UX Case Study · Apple FindMy Extension</p>
+            <h2>Your kid is nearby.<br>But is <em>nearby</em> safe?</h2>
+            <p class="cs-hero-sub">Redesigning what "location sharing" actually means - from a passive dot on a map to a real-time safety layer that gives parents the context they need most.</p>
+            <div class="cs-tag-row">
+                <span class="cs-tag">UX Research</span>
+                <span class="cs-tag">iOS Design</span>
+                <span class="cs-tag">Safety Tech</span>
+                <span class="cs-tag">Contextual Inquiry</span>
+                <span class="cs-tag">Feature Extension</span>
+            </div>
+        </section>
+
+        <!-- STAT BAR -->
+        <div class="cs-stat-bar">
+            <div class="cs-stat-card">
+                <div class="cs-stat-num">41%</div>
+                <div class="cs-stat-label">of U.S. parents fear for their child's physical safety (Gallup, 2024)</div>
+            </div>
+            <div class="cs-stat-card">
+                <div class="cs-stat-num">1B+</div>
+                <div class="cs-stat-label">Apple devices on FindMy's network - already in parents' pockets</div>
+            </div>
+            <div class="cs-stat-card">
+                <div class="cs-stat-num">10M+</div>
+                <div class="cs-stat-label">Citizen app users - proof of demand for real-time safety alerts</div>
+            </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <section class="cs-section">
+            <div class="cs-section-label">
+                <div class="cs-section-num">1</div>
+                <h3>Overview</h3>
+            </div>
+
+            <p>Several of us on this team grew up watching our parents spiral into panic - frantically texting us after catching a news alert, not knowing if we were anywhere near whatever chaos had just unfolded. I knew that feeling from the other side: your phone blowing up while you're trying to reassure a parent who only has a blinking dot on a map and absolutely zero other information.</p>
+
+            <p>That's the gap. <strong>FindMy tells you where someone is. It tells you nothing about whether that place is safe.</strong> For parents of teens and young adults, that distinction is everything.</p>
+
+            <p>Our project proposes a native extension to Apple's FindMy that adds a real-time safety layer on top of location sharing. Think crime reports, hazard alerts, and incident notifications tied directly to your family member's current location - not the entire city. A heat map radiating around a person's pin. Alerts that evolve as situations unfold, not a single push notification dropped into the void.</p>
+
+            <div class="cs-problem">
+                <p class="cs-eyebrow">Problem Statement</p>
+                <p>Parents of teens and young adults (ages 13-22) rely on location sharing apps to monitor their children's safety - but current tools only show <em>where</em> their child is, not whether that location is actually safe. When incidents happen nearby, parents are left anxious and without options, and their child may not be reachable right away.</p>
+            </div>
+
+            <p>We chose to build on FindMy specifically because it's already there: free, pre-installed, trusted by millions. We don't need to convince anyone to download another app - we meet families where they already are and make a tool they already use dramatically more meaningful.</p>
+
+            <p>From a business perspective, the global public safety market was valued at <strong>$511.1 billion in 2024</strong>. Citizen's 10M+ users prove the demand for exactly the kind of contextual safety information that FindMy currently lacks. Bridging those two worlds - existing platform trust and real-time safety data - is a meaningful, commercially viable opportunity.</p>
+        </section>
+
+        <!-- USER RESEARCH -->
+        <section class="cs-section">
+            <div class="cs-section-label">
+                <div class="cs-section-num">2</div>
+                <h3>User Research</h3>
+            </div>
+
+            <p>We interviewed parents and guardians who actively use location tracking apps to monitor their teens or young adults. We deliberately avoided recruiting people already sold on our idea - we wanted to understand actual behavior, not just confirmation of a hypothesis.</p>
+
+            <p><strong>Recruiting criteria:</strong> parent or guardian of a child aged 13-22, currently using FindMy, Life360, or similar. Here's who we spoke with:</p>
+
+            <div class="cs-participant-grid">
+                <div class="cs-participant-card">
+                    <div class="cs-participant-label">Participant 1</div>
+                    <p>Father of a 22 and 27-year-old. Uses FindMy + PulsePoint (a separate police/fire alert app). Checks location situationally - when picking up his son or when something appears in the news.</p>
+                </div>
+                <div class="cs-participant-card">
+                    <div class="cs-participant-label">Participant 2</div>
+                    <p>Mother of two daughters, ages 19 and 21. Checks location every 30 minutes. Uses no safety apps - relies entirely on FindMy, texting, and calling.</p>
+                </div>
+                <div class="cs-participant-card">
+                    <div class="cs-participant-label">Participant 3</div>
+                    <p>Mother of a 13-year-old. Monitors every 30 minutes during school or outings. Gathers safety info from the news, social media, and word of mouth from friends.</p>
+                </div>
+                <div class="cs-participant-card">
+                    <div class="cs-participant-label">Participant 4</div>
+                    <p>Parent of a 16 and 22-year-old. Uses Life360. Noted that the intensity of tracking naturally decreases as children grow into adults.</p>
+                </div>
+            </div>
+
+            <h4>What We Found</h4>
+
+            <p>The overarching theme: <strong>location alone creates a false sense of security.</strong> Parents could see the dot. They had no idea what was happening around it.</p>
+
+            <ul class="cs-findings">
+                <li>Every parent described some version of the same anxiety loop - check location, text child, wait for response, repeat. Not because anything was wrong, but because the app gave them no other signal.</li>
+                <li>One father maintained two separate apps (FindMy + PulsePoint) just to connect location to safety context. Even then, PulsePoint alerts covered his entire city, not his son's specific location.</li>
+                <li>The "5 minutes ago" timestamp on FindMy was universally disliked. That small delay was enough to plant doubt: "Is that still where they are?"</li>
+                <li>Parents wanted alerts that evolved - not a single ping, but ongoing updates as situations changed. "Do I need to go right now? Is it getting worse or better?"</li>
+                <li>One parent asked for an emergency button that could simultaneously alert both family and 911, with real-time audio so they could hear what was happening.</li>
+            </ul>
+
+            <div class="cs-quote">
+                <p>"If something is happening in the area, the app doesn't tell me what's going on. I want to know: do I need to go right away? Is my son in danger? I want constant updates."</p>
+                <cite>- Participant 1, father of a 22-year-old</cite>
+            </div>
+
+            <h4>The Surprising Stuff</h4>
+
+            <div class="cs-unexpected">
+                <p class="cs-eyebrow" style="margin-bottom: 1rem;">Things we didn't expect going in</p>
+                <ul>
+                    <li>One dad used FindMy primarily as a navigation tool - guiding his wife through unfamiliar streets by monitoring her pin. The app had quietly evolved into a couples' GPS, not just a parenting tool.</li>
+                    <li>Trust physically decreases parental anxiety. As children age into adulthood, parents described consciously choosing to check less - because their child earned more independence. Any feature we build needs to feel respectful, not surveillance-heavy.</li>
+                    <li>One parent was texting her child for safety check-ins even with zero evidence of danger - just because the neighborhood name was unfamiliar. Uncertainty itself was the trigger, not actual risk. Our solution needed to address ambient anxiety, not just emergencies.</li>
+                    <li>One parent's older daughter had opted out of location sharing entirely for privacy reasons - yet the parent still worried constantly. We hadn't anticipated designing for families where tracking isn't even an option.</li>
+                </ul>
+            </div>
+
+            <div class="cs-pivot">
+                <p><strong style="font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; color: light-dark(#3182ce, var(--accent-color, #a3c4f3));">How research shaped our direction</strong>Going in, we assumed parents mainly wanted alerts for dangerous events. What we learned was subtler: parents want <em>ambient reassurance</em>, not just emergency pings. The product needs to answer "is everything probably fine?" just as much as "something is wrong right now." That shifted us from a pure alert system toward a calmer, more continuous safety layer - a quieter presence that speaks up when it matters.</p>
+            </div>
+
+            <p>We also realized the check-in behavior isn't just a workaround - it's an emotional ritual. Parents aren't checking location because they distrust the app. They're checking because the act of looking provides temporary comfort. The challenge isn't to make people check less. It's to make each check mean more.</p>
+        </section>
+
+        <!-- DESIGN -->
+        <section class="cs-section">
+            <div class="cs-section-label">
+                <div class="cs-section-num">3</div>
+                <h3>Design</h3>
+            </div>
+
+            <p>Our research made it clear: parents don't need a new app - they need a smarter version of the one already on their phone. We focused our design on a single, native-feeling user flow: <strong>setting up safety alerts directly from the FindMy person card.</strong> The entry point is already familiar. We just extended it.</p>
+
+            <h4>From sketch to screen</h4>
+            <p>We started with lo-fi sketches to map out the flow quickly before committing to pixels. The rough drawings below show our earliest thinking - the heat map on the map view, the person card with a new "Incident Alerts" entry, and the settings screen. From there we built high-fidelity prototypes in Figma that mirror the existing iOS aesthetic so the extension feels like it was always there.</p>
+
+            <!-- 
+                Update the src paths below to match where you save your images.
+                Suggested folder: assets/images/cogs127/
+                Lo-fi images: crop each sketch panel from your combined image and save separately.
+                Hi-fi images: export each screen from Figma as PNG.
+            -->
+
+            <p class="cs-eyebrow" style="margin: 1.25rem 0 0.5rem;">Lo-fidelity sketches</p>
+            <div class="cs-screen-strip">
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/lofi-1-heatmap.png" alt="Lo-fi sketch of map view showing color-coded heat map radiating around family members with people list below" loading="lazy">
+                    <span class="cs-screen-caption">People list &amp; heat map</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/lofi-2-personcard.png" alt="Lo-fi sketch of person card pop-up with name, location, contact, directions and new incident alerts row" loading="lazy">
+                    <span class="cs-screen-caption">Person card - entry point</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/lofi-3-setup.png" alt="Lo-fi sketch of incident alert setup sheet showing radius selector and incident type checkboxes" loading="lazy">
+                    <span class="cs-screen-caption">Alert setup sheet</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/lofi-4-settings.png" alt="Lo-fi sketch of settings panel with alert radius options and crime, hazard, emergency filter checkboxes" loading="lazy">
+                    <span class="cs-screen-caption">Radius &amp; filter settings</span>
+                </div>
+            </div>
+
+            <p class="cs-eyebrow" style="margin: 1.75rem 0 0.5rem;">High-fidelity prototypes</p>
+            <div class="cs-screen-strip">
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/hifi-1-map.png" alt="Hi-fi FindMy map view showing the people list and a color-coded heat map safety layer active on the map" loading="lazy">
+                    <span class="cs-screen-caption">People list &amp; heat map</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/hifi-2-personcard-top.png" alt="Hi-fi person card first view showing the person's name, location, contact card, directions card, and notifications card" loading="lazy">
+                    <span class="cs-screen-caption">Person card - top view</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/hifi-3-personcard-scroll.png" alt="Hi-fi person card second view after scrolling, showing notifications card, new Incident Alerts card with Enable button, and settings card below" loading="lazy">
+                    <span class="cs-screen-caption">Person card - scroll to new entry</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/hifi-4-alertsetup.png" alt="Hi-fi incident alerts setup popup showing preset radius options, custom radius option, heat map display toggle, and alert filters for crime, hazards, and emergency" loading="lazy">
+                    <span class="cs-screen-caption">Alert setup popup</span>
+                </div>
+                <div class="cs-screen-item">
+                    <img src="assets/images/cogs127/hifi-5-preview.png" alt="Hi-fi map preview showing the selected alert radius ring drawn around the tracked person's current location" loading="lazy">
+                    <span class="cs-screen-caption">Radius preview on map</span>
+                </div>
+            </div>
+
+            <h4>User flow: Setting up safety alerts</h4>
+            <p>The flow is designed to be set up once and then work quietly in the background. Every step lives inside FindMy - no switching apps, no new accounts.</p>
+
+            <ol class="cs-flow">
+                <li><strong>People list &amp; heat map.</strong> When the parent opens FindMy they see their family list and the map. If the safety layer is on, a color-coded heat map radiates around each person's pin - a passive visual cue that something may be happening nearby, before any alert has even fired.</li>
+                <li><strong>Person card - first view.</strong> The parent taps a name in the people list. A card slides up showing the person's name, current location, and the existing action rows: Contact, Directions, and Notifications. Familiar territory - nothing feels out of place yet.</li>
+                <li><strong>Person card - scrolled view.</strong> Scrolling down reveals a new row we added: Incident Alerts - sitting naturally between Notifications and Settings. An Enable button invites the parent in without demanding anything upfront. One tap to proceed.</li>
+                <li><strong>Alert setup popup.</strong> A modal appears where the parent can choose a preset alert radius (0.5 mi, 1 mi, 5 mi) or add a custom distance. They can also set the heat map to always show or only activate when the safety layer is enabled. Finally, they filter which incident types to monitor: Crime, Hazards, Emergency. Tapping the checkmark in the top-right confirms the setup.</li>
+                <li><strong>Radius preview on map.</strong> The next popup displays the map preview to show the radius ring drawn around the tracked person's current location - giving the parent an immediate, concrete sense of the coverage area they just set up. No guessing. What you configured is what you see.</li>
+            </ol>
+
+            <div class="cs-pivot">
+                <p><strong style="font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; color: light-dark(#3182ce, var(--accent-color, #a3c4f3));">Design principle</strong>Every decision came back to one rule: meet parents where they already are. No new app, no new login, no new habit to build. We extended a screen they already open dozens of times a day - and made it answer the question they were always silently asking.</p>
+            </div>
+        </section>
+
     </main>
 
+    <footer>
+        <p>Find me on <a href="https://www.linkedin.com/in/daniel-campuzano-936391319">LinkedIn</a> and <a href="https://github.com/dacamp20">Github</a></p>
+        <p>Email: dancampu26@gmail.com</p>
+        <noscript>Please enable JavaScript for best experience.</noscript>
+    </footer>
+
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html>
