@@ -355,6 +355,81 @@
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .cs-stat-bar { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
         }
+
+        /* ── Alternative design blocks ── */
+        .cs-alt-block {
+            background-color: light-dark(#f7fafc, #2d3748);
+            border-radius: var(--radius-size, 12px);
+            padding: 1.75rem;
+            margin: 2rem 0;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+        }
+        .cs-alt-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .cs-alt-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background-color: light-dark(#e6f7ff, #2a4365);
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+            padding: 0.3rem 0.85rem;
+            border-radius: 100px;
+            flex-shrink: 0;
+        }
+        .cs-alt-tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            margin: 0;
+            line-height: 1.4;
+        }
+        .cs-alt-changes {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .cs-alt-change-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            font-size: 0.93rem;
+            line-height: 1.7;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+        }
+        .cs-alt-change-num {
+            min-width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: light-dark(blue, var(--accent-color, #a3c4f3));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .cs-alt-note {
+            font-size: 0.88rem;
+            font-style: italic;
+            color: light-dark(#4a5568, #cbd5e0);
+            border-left: 3px solid light-dark(#e2e8f0, #4a5568);
+            padding-left: 1rem;
+            margin: 1rem 0 0;
+            line-height: 1.65;
+        }
+        @media screen and (max-width: 767px) {
+            .cs-alt-header { flex-direction: column; gap: 0.5rem; }
+            .cs-alt-block { padding: 1.25rem; }
+        }
     </style>
 </head>
 
@@ -573,6 +648,91 @@
 
             <div class="cs-pivot">
                 <p><strong style="font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; color: light-dark(#3182ce, var(--accent-color, #a3c4f3));">Design principle</strong>Every decision came back to one rule: meet parents where they already are. No new app, no new login, no new habit to build. We extended a screen they already open dozens of times a day - and made it answer the question they were always silently asking.</p>
+            </div>
+
+            <h4>Alternative designs: pushing the original further</h4>
+            <p>After establishing the core user flow, two screens stood out as opportunities to go deeper. The alternatives below address specific friction points surfaced in user research, each grounded in what parents actually said they needed, not just what we assumed.</p>
+
+            <!-- ── SCREEN 2 ALT ── -->
+            <div class="cs-alt-block">
+                <div class="cs-alt-header">
+                    <div class="cs-alt-badge">Screen 2 · Alternative Design#1</div>
+                    <p class="cs-alt-tagline">Lead with safety, not location</p>
+                </div>
+
+                <p>The original person card answered "where is my child?" This redesign answers what parents are actually asking: <strong>"Is my child okay right now?"</strong> Three targeted changes shift the card from a location readout into a safety dashboard.</p>
+
+                <div class="cs-alt-changes">
+                    <div class="cs-alt-change-item">
+                        <div class="cs-alt-change-num">1</div>
+                        <div>
+                            <strong>Safety status leads the card.</strong> A prominent status block (e.g., <em>Stay Aware</em>) with inline incident tags such as: "Crime: 2" and "Hazard: 1" appear at the very top. Before a parent reads anything else, they get an ambient risk signal. This reframes the app's identity from "location tracker with a safety add-on" to "safety tool that also shows location."
+                        </div>
+                    </div>
+                    <div class="cs-alt-change-item">
+                        <div class="cs-alt-change-num">2</div>
+                        <div>
+                            <strong>Quick message section moves inside the card.</strong> The original design placed messaging in a floating bar above the card which was easy to overlook. Moving it directly below the safety status mirrors the natural parent decision flow: check the risk level, then immediately reach out. Preset message options reduce friction further, especially when driving.
+                        </div>
+                    </div>
+                    <div class="cs-alt-change-item">
+                        <div class="cs-alt-change-num">3</div>
+                        <div>
+                            <strong>Incident Alerts row surfaces live context.</strong> The original row showed only a static "Enable" button. The updated row shows the active radius (e.g., 5 mi) and an iOS-style on/off toggle so that parents can confirm alerts are running at a glance, without tapping into a settings screen. Our user testing confirmed the toggle feels more permanent and intuitive than a text button.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cs-screen-strip" style="margin-top: 1.25rem;">
+                    <div class="cs-screen-item">
+                        <img src="assets/images/cogs127/redesign-screen2.png" alt="Alternative Screen 2 redesign showing the full person card with safety status at top displaying Stay Aware and incident tags Crime 2 and Hazard 1, quick message section with preset options below, and Incident Alerts row with iOS toggle and active radius label" loading="lazy">
+                        <span class="cs-screen-caption">Screen 2 - full redesign</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SCREEN 4 ALT ── -->
+            <div class="cs-alt-block">
+                <div class="cs-alt-header">
+                    <div class="cs-alt-badge">Screen 4 · Alternative Design#1</div>
+                    <p class="cs-alt-tagline">Show the radius, don't just set it</p>
+                </div>
+
+                <p>The original Screen 4 offered preset radius buttons with 0.5 mi, 1 mi, 5 mi, and "add custom" options along with a separate preview screen to confirm. That two-step process forced parents to guess what a number meant geographically, then navigate away to verify it. This alternative solves both problems in one view.</p>
+
+                <div class="cs-alt-changes">
+                    <div class="cs-alt-change-item">
+                        <div class="cs-alt-change-num">1</div>
+                        <div>
+                            <strong>Continuous slider with live map preview.</strong> A drag slider (0.25-5 miles) replaces the preset buttons, and the map updates in real time as the parent drags. No guessing, no back-and-forth because the geographic coverage is visible the moment the slider moves. User testing confirmed this was faster and more intuitive than tapping preset values and checking a separate preview screen.
+                        </div>
+                    </div>
+                    <div class="cs-alt-change-item">
+                        <div class="cs-alt-change-num">2</div>
+                        <div>
+                            <strong>Descriptive subtext under each alert filter.</strong> The original listed bare category names (Crime, Hazards, Emergency) with no context. Adding a short summary under each such as <em>"Assaults, theft, shootings, weapons, vandalism"</em> under Crime &amp; Weapons. This removes the ambiguity around which category a specific incident type falls into. Testing showed this directly resolved the confusion around where "fire" belonged.
+                        </div>
+                    </div>
+                    <div class="cs-alt-change-item">
+                        <div class="cs-alt-change-num">3</div>
+                        <div>
+                            <strong>Toggle switches replace checkboxes.</strong> The original screen had the filter options as checkmarks when selected, however in our testing we found that users feel like the on/off toggles were more intuitive. Aligning with Apple's Human Interface Guidelines also makes the feature feel native and not bolted on. Users in testing responded immediately to the green signifies on convention.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-screen-strip" style="margin-top: 1.25rem;">
+                    <div class="cs-screen-item">
+                        <img src="assets/images/cogs127/redesign-screen4.png" alt="Alternative Screen 4 redesign showing the Incident Alerts setup with a live map preview, continuous radius slider set to 4.75 miles, heat map always on toggle, and alert filters for Crime and Weapons, Hazards and Fires, and Emergencies each with descriptive subtext and iOS toggle switches" loading="lazy">
+                        <span class="cs-screen-caption">Screen 4 - full redesign</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── COMPARISON CALLOUT ── -->
+            <div class="cs-pivot">
+                <p><strong style="font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; color: light-dark(#3182ce, var(--accent-color, #a3c4f3));">What the alternatives taught us</strong>Both screens share the same underlying principle: reduce the steps between a parent's anxiety and their reassurance. Screen 2 does it by surfacing safety context before a parent has to ask for it. Screen 4 does it by making abstract settings immediately concrete. Together they move the product from a configuration-heavy tool toward something that feels effortlessly informative.</p>
             </div>
         </section>
 
