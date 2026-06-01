@@ -430,6 +430,105 @@
             .cs-alt-header { flex-direction: column; gap: 0.5rem; }
             .cs-alt-block { padding: 1.25rem; }
         }
+
+        /* ── User Testing + Before/After section ── */
+        .cs-ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+            align-items: start;
+        }
+        .cs-ba-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .cs-ba-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.8rem;
+            border-radius: 100px;
+            display: inline-block;
+            width: fit-content;
+        }
+        .cs-ba-label--before {
+            background-color: light-dark(#fff5f5, #4a1a1a);
+            color: light-dark(#c53030, #fc8181);
+            border: 1px solid light-dark(#fed7d7, #742a2a);
+        }
+        .cs-ba-label--after {
+            background-color: light-dark(#f0fff4, #1a3a2a);
+            color: light-dark(#276749, #68d391);
+            border: 1px solid light-dark(#c6f6d5, #276749);
+        }
+        .cs-ba-col img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+            object-fit: contain;
+            display: block;
+        }
+        .cs-ba-caption {
+            font-size: 0.8rem;
+            color: light-dark(#4a5568, #cbd5e0);
+            line-height: 1.5;
+        }
+        .cs-ba-changes {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0 0;
+        }
+        .cs-ba-changes li {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid light-dark(#e2e8f0, #4a5568);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: light-dark(var(--light-text-color, black), var(--dark-text-color, white));
+            align-items: flex-start;
+        }
+        .cs-ba-changes li:last-child { border-bottom: none; }
+        .cs-ba-arrow {
+            color: light-dark(#276749, #68d391);
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            padding-top: 3px;
+        }
+        .cs-testing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .cs-testing-card {
+            background-color: light-dark(#f7fafc, #2d3748);
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            border: 1px solid light-dark(#e2e8f0, #4a5568);
+        }
+        .cs-testing-card-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: light-dark(#3182ce, var(--accent-color, #a3c4f3));
+            margin-bottom: 0.5rem;
+        }
+        .cs-testing-card p {
+            font-size: 0.88rem;
+            color: light-dark(#4a5568, #cbd5e0);
+            line-height: 1.6;
+            margin: 0;
+        }
+        @media screen and (max-width: 767px) {
+            .cs-ba-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 
@@ -734,6 +833,132 @@
             <div class="cs-pivot">
                 <p><strong style="font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; color: light-dark(#3182ce, var(--accent-color, #a3c4f3));">What the alternatives taught us</strong>Both screens share the same underlying principle: reduce the steps between a parent's anxiety and their reassurance. Screen 2 does it by surfacing safety context before a parent has to ask for it. Screen 4 does it by making abstract settings immediately concrete. Together they move the product from a configuration-heavy tool toward something that feels effortlessly informative.</p>
             </div>
+        </section>
+
+        <!-- USER TESTING + BEFORE & AFTER -->
+        <section class="cs-section">
+            <div class="cs-section-label">
+                <div class="cs-section-num">4</div>
+                <h3>User Testing &amp; Before-and-After</h3>
+            </div>
+
+            <p>After building out our high-fidelity prototypes we ran moderated usability sessions to test them with real users. The goal was to find out where our designs were working and where they weren't so we could make improvements before finalizing them.</p>
+
+            <h4>Methodology</h4>
+
+            <div class="cs-testing-grid">
+                <div class="cs-testing-card">
+                    <div class="cs-testing-card-label">Participants</div>
+                    <p>Parents and guardians who are currently using FindMy or a similar app to track a child or young adult between the ages of 13 and 22.</p>
+                </div>
+                <div class="cs-testing-card">
+                    <div class="cs-testing-card-label">Format</div>
+                    <p>Moderated think-aloud sessions where participants walked through our user flow and told us what they were thinking and expecting at each step.</p>
+                </div>
+                <div class="cs-testing-card">
+                    <div class="cs-testing-card-label">Prototypes tested</div>
+                    <p>We tested the original user flow (Screens 1-5) and then showed alternative designs for Screens 2 and 4 so participants could compare them directly.</p>
+                </div>
+                <div class="cs-testing-card">
+                    <div class="cs-testing-card-label">Key tasks</div>
+                    <p>Enable incident alerts, set a 5-mile alert radius, turn off Hazards &amp; Fires while keeping the other filters on, and send a quick message to a tracked person.</p>
+                </div>
+            </div>
+
+            <h4>What we found</h4>
+
+            <p>Two main themes came up across our sessions. First, the person card in its original form didn't surface safety information quickly enough - parents had to scroll through Contact, Directions, and Notifications before getting to anything safety-related. The location was front and center but the context around it wasn't. Second, the alert radius setup was hard to picture. Participants couldn't visualize what "1 mile" actually looked like on a real map without going to a separate preview screen, and the bare filter labels didn't tell them which specific incidents were actually covered.</p>
+
+            <div class="cs-quote">
+                <p>"I want to know right away - is he okay? I shouldn't have to scroll down to find that out."</p>
+                <cite>- Participant 1, father tracking a college-age son</cite>
+            </div>
+
+            <p>We also found that users strongly preferred iOS toggle switches over checkboxes for the alert filters. Checkboxes felt like a task list. Toggles felt like a setting you turn on and leave on, which makes a lot more sense for a safety feature parents want to trust passively in the background.</p>
+
+            <div class="cs-problem">
+                <p class="cs-eyebrow">Point of view</p>
+                <p>A parent tracking their child needs more than just a location pin - they need safety context right away - because knowing <em>where</em> someone is doesn't actually answer the question they're asking: <em>are they okay right now?</em> The changes we made after testing were all aimed at closing that gap.</p>
+            </div>
+
+            <!-- ══════════════════════════════════════
+                 BEFORE & AFTER: SCREEN 2
+            ═══════════════════════════════════════ -->
+            <h4 style="margin-top: 2rem;">Before &amp; After - Screen 2: Person Card</h4>
+
+            <p>The original person card used the same hierarchy that FindMy has always had - Contact, Directions, and Notifications at the top. That works fine for navigation but it wasn't designed with safety in mind. Based on our user testing feedback we changed the hierarchy so that safety information is the first thing a parent sees when they open the card.</p>
+
+            <div class="cs-ba-grid">
+                <div class="cs-ba-col">
+                    <span class="cs-ba-label cs-ba-label--before">Before</span>
+                    <img src="assets/images/cogs127/before-screen2.png" alt="Original Screen 2 person card showing the standard FindMy layout with Contact and Directions tiles at the top, Notifications below, and a floating message bar above the card with no safety status visible" loading="lazy">
+                    <span class="cs-ba-caption">Original card: Contact and Directions lead the layout. Safety features are buried further down the card.</span>
+                </div>
+                <div class="cs-ba-col">
+                    <span class="cs-ba-label cs-ba-label--after">After</span>
+                    <img src="assets/images/cogs127/final_screen2.png" alt="Redesigned Screen 2 person card with Safety Insights section at the top showing 3 incidents within 4.5 miles, battery percentage added to the location line, and Contact and Directions below" loading="lazy">
+                    <span class="cs-ba-caption">Redesigned card: Safety Insights is now the first section on the card, battery percentage is visible inline, and Contact and Directions move below.</span>
+                </div>
+            </div>
+
+            <ul class="cs-ba-changes">
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Safety Insights section moves to the top.</strong> A dedicated card showing incident count and alert radius now appears right when the parent opens the person card. This was the most common frustration in testing - parents didn't want to scroll to find safety information, they wanted to see it immediately.</span>
+                </li>
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Battery percentage added inline.</strong> The original card only showed a "Now" timestamp for the location update. We added battery percentage next to it because it gives parents an extra signal - a child at 4% battery who isn't responding reads very differently than one at 80%.</span>
+                </li>
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Content hierarchy restructured.</strong> Contact and Directions didn't get removed, they just moved lower. The card now reads: safety first, then messaging, then navigation. That order reflects how a parent actually thinks when they open the app worried about their child.</span>
+                </li>
+            </ul>
+
+            <!-- ══════════════════════════════════════
+                 BEFORE & AFTER: SCREEN 4
+            ═══════════════════════════════════════ -->
+            <h4 style="margin-top: 2.5rem;">Before &amp; After - Screen 4: Alert Setup</h4>
+
+            <p>The original alert setup screen had users pick from three preset radius options and then navigate to a separate screen to preview what they had selected. On top of that the filter labels had no descriptions and the heat map options were confusing even to us. Based on user testing feedback we redesigned this screen to keep everything in one place and make each setting more self-explanatory.</p>
+
+            <div class="cs-ba-grid">
+                <div class="cs-ba-col">
+                    <span class="cs-ba-label cs-ba-label--before">Before</span>
+                    <img src="assets/images/cogs127/before-screen4.png" alt="Original Screen 4 showing preset radius buttons for 0.5 mile, 1 mile, and 5 miles with an Add Custom option, a Heat Map section with Always On and Only On When Incident Map Active text options, and an Alert Filter section listing Crime, Hazards, and Emergency with checkmarks" loading="lazy">
+                    <span class="cs-ba-caption">Original setup: fixed radius options with no preview, confusing heat map options, and filter labels with no descriptions.</span>
+                </div>
+                <div class="cs-ba-col">
+                    <span class="cs-ba-label cs-ba-label--after">After</span>
+                    <img src="assets/images/cogs127/final_screen4.png" alt="Redesigned Screen 4 titled Safety Settings showing a large live map preview with a radius ring, a continuous slider showing up to 5.75 miles, a Heat Map section with an Allow Notifications toggle and description, and an Alert Filter section with Crime and Weapons, Hazards and Fires, Emergencies, and Registered Sex Offenders each with descriptive subtext and iOS toggle switches" loading="lazy">
+                    <span class="cs-ba-caption">Redesigned setup: live map preview with a draggable slider, clearer heat map toggle with a description, filter descriptions, and a new Registered Sex Offenders category added from user feedback.</span>
+                </div>
+            </div>
+
+            <ul class="cs-ba-changes">
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Live map preview replaces the need for a separate preview screen.</strong> In the original design users had to navigate to a second screen to see the radius visually. The redesign puts a large interactive map at the top of the same screen so parents can drag the slider and see the radius ring update in real time without leaving the page. We also included an expand map option for users who prefered a larger view.</span>
+                </li>
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Heat map section reframed around notifications.</strong> The original option "Only On When Incident Map Active" was confusing to every participant we tested with - and honestly to us too. We replaced it with a single "Allow Notifications" toggle and added a short description underneath so it's clear what turning it on actually does.</span>
+                </li>
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Filter descriptions added.</strong> The original labels like "Crime" didn't tell parents what was actually included. We added a short line under each filter listing the specific incident types it covers so parents know exactly what they're enabling rather than having to guess.</span>
+                </li>
+                <li>
+                    <span class="cs-ba-arrow">→</span>
+                    <span><strong>Registered Sex Offenders added as a new filter.</strong> This came directly from user feedback - multiple participants brought it up on their own without us prompting them. It was a clear signal that this was something parents actually wanted, so we added it as a fourth filter option.</span>
+                </li>
+            </ul>
+
+            <div class="cs-pivot" style="margin-top: 2rem;">
+                <p><strong style="font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; color: light-dark(#3182ce, var(--accent-color, #a3c4f3));">Takeaway</strong>Every change in this section came directly from something a real user said or struggled with during testing. Before-and-after stories are useful exactly for this reason - they show that the gap between version one and version two wasn't just aesthetic, it was based on feedback from the people actually using it.</p>
+            </div>
+
         </section>
 
     </main>
